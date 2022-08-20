@@ -1,0 +1,6 @@
+!.eslintrc.js
+!.prettier.config.js
+/.cache
+/build
+/node_modules
+/public/build

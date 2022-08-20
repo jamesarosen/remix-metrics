@@ -5,6 +5,7 @@
     "build": "remix build",
     "deploy": "fly deploy --remote-only",
     "dev": "remix dev",
+    "lint": "npx eslint .",
     "start": "remix-serve build"
   },
   "dependencies": {
@@ -19,7 +20,10 @@
     "@remix-run/eslint-config": "^1.6.8",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
-    "eslint": "^8.20.0",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
     "typescript": "^4.7.4"
   },
   "engines": {
