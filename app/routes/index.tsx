@@ -1,32 +1,31 @@
+import { Link } from "@remix-run/react";
+
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <>
+      <h1>Remix-Metrics Demo</h1>
+      <p>
+        This app demonstrates using{" "}
+        <a href="https://remix.run/" target="_blank" rel="noreferrer">
+          Remix
+        </a>
+        ,{" "}
+        <a href="https://recharts.org/" target="_blank" rel="noreferrer">
+          Recharts
+        </a>
+        , and streaming data via{" "}
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream"
+          target="_blank"
+          rel="noreferrer"
+        >
+          ReadableStream
+        </a>
+      </p>
+      <p>
+        It supports a single metric:{" "}
+        <Link to="/metrics/cosine/table">cosine</Link>.
+      </p>
+    </>
   );
 }
