@@ -7,6 +7,8 @@ import Cosine from "~/data/metrics/Cosine";
 const MetricContext = createContext<Metric>({
   name: "MetricContext value is not set",
   data: [],
+  start: NaN,
+  end: NaN,
 });
 
 export function useMetricContext() {
@@ -14,30 +16,27 @@ export function useMetricContext() {
 }
 
 export function MetricProvider({
-  start,
-  end,
+  metric: initialData,
   children,
 }: {
-  start: number;
-  end: number;
+  metric: Metric;
   children: ReactNode;
 }) {
-  const [metric, setMetric] = useState(new Cosine(start, end));
+  const [metric, setMetric] = useState(initialData);
 
   useEffect(() => {
-    if (isNaN(start) || isNaN(end)) return
+    // TODO: move this to the server and subscribe to changes via SSE
+    if (isNaN(metric.start) || isNaN(metric.end)) return;
 
     const timer = setTimeout(() => {
       const now = Date.now();
-      const previousStart = metric.start || start
-      const previousEnd = metric.end || end
-      setMetric(new Cosine(previousStart + (now - previousEnd), now));
+      setMetric(new Cosine(metric.start + (now - metric.end), now));
     }, 100); // 100ms to avoid skew from long JS tasks
 
     return () => {
       clearTimeout(timer);
     };
-  }, [start, end, metric]);
+  }, [metric]);
 
   return <MetricContext.Provider value={metric} children={children} />;
 }
