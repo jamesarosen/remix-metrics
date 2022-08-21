@@ -35,7 +35,7 @@ export function MetricProvider({
       const previousStart = metric.start || start
       const previousEnd = metric.end || end
       setMetric(new Cosine(previousStart + (now - previousEnd), now));
-    }, 100);
+    }, 100); // 100ms to avoid skew from long JS tasks
 
     return () => {
       clearTimeout(timer);
