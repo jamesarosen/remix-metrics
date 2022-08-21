@@ -25,9 +25,6 @@ export function MetricProvider({
   const [metric, setMetric] = useState(new Cosine(start, end));
 
   useEffect(() => {
-    // Only run the timer client-side
-    if (typeof document === 'undefined') return
-
     if (isNaN(start) || isNaN(end)) return
 
     const timer = setTimeout(() => {
