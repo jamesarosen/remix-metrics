@@ -1,20 +1,6 @@
-import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import MetricTable from '~/components/MetricTable'
-import Cosine from "~/data/metrics/Cosine";
+import MetricTable from "~/components/MetricTable";
 import useDefaultParams from "~/util/useDefaultParams";
-
-export async function loader({ request }: { request: Request }) {
-  const url = new URL(request.url);
-  const start = url.searchParams.get("start");
-  const end = url.searchParams.get("end");
-
-  if (start == null || end == null) {
-    return json({ name: 'Not Found', data: [] })
-  }
-
-  return json(new Cosine(parseInt(start, 10), parseInt(end, 10)))
-}
+import { MetricProvider } from "~/util/MetricContext";
 
 /**
  * This route uses `start` and `end` query-params to define the time range for
@@ -24,15 +10,15 @@ export async function loader({ request }: { request: Request }) {
  *     due to network delay
  */
 export default function Metric() {
-  const now = Date.now()
-  const { start, end } = useDefaultParams({ start: `${now - 10000}`, end: `${now}` })
-  const metric = useLoaderData()
+  const now = Date.now();
+  const { start, end } = useDefaultParams({
+    start: `${now - 10000}`,
+    end: `${now}`,
+  });
 
   return (
-    <>
-    <h2>Metric: {metric.name}</h2>
-    <MetricTable metric={metric} />
-    {JSON.stringify({ start, end })}
-    </>
-  )
+    <MetricProvider start={parseInt(start, 10)} end={parseInt(end, 10)}>
+      <MetricTable />
+    </MetricProvider>
+  );
 }
