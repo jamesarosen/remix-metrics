@@ -42,7 +42,7 @@ export default function Graph() {
         tickMargin={6}
       />
       <YAxis tickMargin={6} />
-      <Line type="monotone" dataKey="value" stroke="#8884d8" />
+      <Line type="monotone" dataKey="value" stroke="#8884d8" isAnimationActive={false} />
     </LineChart>
   );
 }
