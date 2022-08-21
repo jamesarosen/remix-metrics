@@ -4,6 +4,7 @@ import { json } from "@remix-run/node";
 import Cosine from "~/data/metrics/Cosine";
 import useDefaultParams from "~/util/useDefaultParams";
 import { MetricProvider } from "~/util/MetricContext";
+import NullMetric from "~/data/metrics/Null";
 
 export async function loader({ request }: { request: Request }) {
   const url = new URL(request.url);
@@ -12,7 +13,7 @@ export async function loader({ request }: { request: Request }) {
   let metric: Metric;
 
   if (isNaN(start) || isNaN(end)) {
-    metric = { name: "Not found", data: [], start: NaN, end: NaN };
+    metric = NullMetric;
   } else {
     metric = new Cosine(start, end);
   }
