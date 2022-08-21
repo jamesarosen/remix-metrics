@@ -1,6 +1,6 @@
-import MetricTable from "~/components/MetricTable";
 import useDefaultParams from "~/util/useDefaultParams";
 import { MetricProvider } from "~/util/MetricContext";
+import { Outlet } from "@remix-run/react";
 
 /**
  * This route uses `start` and `end` query-params to define the time range for
@@ -18,7 +18,7 @@ export default function Metric() {
 
   return (
     <MetricProvider start={parseInt(start, 10)} end={parseInt(end, 10)}>
-      <MetricTable />
+      <Outlet />
     </MetricProvider>
   );
 }

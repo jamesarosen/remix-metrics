@@ -1,6 +1,6 @@
 import { useMetricContext } from "~/util/MetricContext";
 
-export default function MetricTable() {
+export default function Table() {
   const metric = useMetricContext()
 
   return (
