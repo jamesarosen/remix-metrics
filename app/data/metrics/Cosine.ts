@@ -6,7 +6,7 @@ export default class Cosine implements Metric {
 
   data: Array<MetricDatum>
 
-  constructor(start, end) {
+  constructor(start: number, end: number) {
     this.data = secondsInRange(start, end)
       .map(timestamp => ({ timestamp, value: Math.cos(timestamp) }))
   }
