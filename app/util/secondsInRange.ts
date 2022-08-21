@@ -9,5 +9,5 @@ export default function secondsInRange(
 ): Array<number> {
   const start = Math.ceil(startTimestamp / 1000);
   const end = Math.floor(endTimestamp / 1000);
-  return Array.from({ length: end - start }, (_, i) => (start + i) * 1000);
+  return Array.from({ length: 1 + end - start }, (_, i) => (start + i) * 1000);
 }
