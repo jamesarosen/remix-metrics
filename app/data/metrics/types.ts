@@ -6,4 +6,6 @@ export type MetricDatum = {
 export type Metric = {
   name: string,
   data: Array<MetricDatum>,
+  start: number,
+  end: number,
 }
