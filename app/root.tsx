@@ -1,41 +1,43 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction } from '@remix-run/node'
 import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
-import SiteFooter from "~/components/SiteFooter"
-import SiteHeader from "~/components/SiteHeader"
-import styles from "./styles/app.css"
+	Links,
+	LiveReload,
+	Meta,
+	Outlet,
+	Scripts,
+	ScrollRestoration,
+} from '@remix-run/react'
+import SiteFooter from '~/components/SiteFooter'
+import SiteHeader from '~/components/SiteHeader'
+import styles from './styles/app.css'
 
 export function links() {
-  return [{ rel: "stylesheet", href: styles }]
+	return [{ rel: 'stylesheet', href: styles }]
 }
 
 export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "New Remix App",
-  viewport: "width=device-width,initial-scale=1",
-});
+	charset: 'utf-8',
+	title: 'New Remix App',
+	viewport: 'width=device-width,initial-scale=1',
+})
 
 export default function App() {
-  return (
-    <html lang="en">
-      <head>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <SiteHeader className="mb-8" />
-        <main><Outlet /></main>
-        <SiteFooter className="mt-auto md:mt-8" />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
-  );
+	return (
+		<html lang='en'>
+			<head>
+				<Meta />
+				<Links />
+			</head>
+			<body>
+				<SiteHeader className='mb-8' />
+				<main>
+					<Outlet />
+				</main>
+				<SiteFooter className='mt-auto md:mt-8' />
+				<ScrollRestoration />
+				<Scripts />
+				<LiveReload />
+			</body>
+		</html>
+	)
 }
