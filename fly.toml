@@ -1,6 +1,6 @@
 # fly.toml file generated for long-smoke-3450 on 2022-08-21T15:21:47-07:00
 
-app = "long-smoke-3450"
+app = "remix-metrics"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
