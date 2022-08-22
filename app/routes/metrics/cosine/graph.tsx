@@ -35,14 +35,16 @@ export default function Graph() {
   return (
     <LineChart width={600} height={300} data={metric.data}>
       <XAxis
+        className="stroke-black dark:stroke-white"
         dataKey="timestamp"
         interval={0}
         padding={{ left: 50, right: 50 }}
+        stroke="inherit"
         tick={<XAxisTick count={metric.data.length} />}
         tickMargin={6}
       />
       <YAxis tickMargin={6} />
-      <Line type="monotone" dataKey="value" stroke="#8884d8" isAnimationActive={false} />
+      <Line className="stroke-blue-900 dark:stroke-blue-100" type="monotone" dataKey="value" stroke="inherit" isAnimationActive={false} />
     </LineChart>
   );
 }

@@ -38,11 +38,12 @@ export default function LoadMetric() {
 
   return (
     <MetricProvider metric={data}>
-      <nav>
+      <h2 className="text-xl">{data.name}</h2>
+      <Outlet />
+      <nav className="flex gap-8 m-1">
         <NavLink to="table">Show table</NavLink>
         <NavLink to="graph">Show graph</NavLink>
       </nav>
-      <Outlet />
     </MetricProvider>
   );
 }
