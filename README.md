@@ -1,22 +1,10 @@
-# Welcome to Remix!
+# Remix-Metrics
 
-- [Remix Docs](https://remix.run/docs)
+This demo application explores using
 
-## Fly Setup
-
-1. [Install `flyctl`](https://fly.io/docs/getting-started/installing-flyctl/)
-
-2. Sign up and log in to Fly
-
-```sh
-flyctl auth signup
-```
-
-3. Setup Fly. It might ask if you want to deploy, say no since you haven't built the app yet.
-
-```sh
-flyctl launch
-```
+* [Remix](https://remix.run/), a React-based full-stack web application framework
+* [Recharts](https://recharts.org/), a composable charting library built on React components
+* [ReadableStream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream), a web standard for streaming data from server to client
 
 ## Development
 
@@ -26,11 +14,19 @@ From your terminal:
 npm run dev
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+This starts your app in development mode. Remix will automatically rebuild assets on save.
+
+Open the application at [http://localhost:3000](https://localhost:3000).
 
 ## Deployment
 
-If you've followed the setup instructions already, all you need to do is run this:
+### First Time
+
+Follow Fly.io's [Deploy a Remix Application](https://fly.io/docs/getting-started/remix/) instructions to get an account and command-line tools.
+
+### Every Time
+
+Run
 
 ```sh
 npm run deploy
@@ -38,4 +34,16 @@ npm run deploy
 
 You can run `flyctl info` to get the url and ip address of your server.
 
-Check out the [fly docs](https://fly.io/docs/getting-started/node/) for more information.
+## Future Improvements
+
+If you want to contribute, here are some ideas:
+
+* More metric generator functions
+* Smooth transitions for the graph visualization
+* Summary values for metrics like latest value, mean, median, 95th percentile
+* Dashboard that shows summary information for all metrics
+* Pause / resume live updates
+* Fix linting
+* Improve unit tests
+* Continuous integration & deployment via GitHub actions
+* Identify / fix accessibility issues (because [accessibility issues are bugs](https://sheribyrnehaber.com/why-accessibility-bugs-are-a-good-thing-and-how-to-handle-them/))
