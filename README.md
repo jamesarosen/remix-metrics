@@ -43,7 +43,6 @@ If you want to contribute, here are some ideas:
 * Summary values for metrics like latest value, mean, median, 95th percentile
 * Dashboard that shows summary information for all metrics
 * Pause / resume live updates
-* Fix linting
 * Improve unit tests
 * Continuous integration & deployment via GitHub actions
 * Identify / fix accessibility issues (because [accessibility issues are bugs](https://sheribyrnehaber.com/why-accessibility-bugs-are-a-good-thing-and-how-to-handle-them/))

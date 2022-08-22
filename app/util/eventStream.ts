@@ -1,7 +1,7 @@
-import { ReadableStream } from "@remix-run/web-stream"
+import { ReadableStream } from '@remix-run/web-stream'
 
 type InitFunction = {
-  (send: (event: string, data: string) => void): () => void;
+	(send: (event: string, data: string) => void): () => void
 }
 
 /**
@@ -14,38 +14,38 @@ type InitFunction = {
  * @see https://github.com/remix-run/remix/discussions/2622
  */
 export default function eventStream(request: Request, init: InitFunction) {
-  const stream = new ReadableStream({
-    start(controller: ReadableStreamController<Uint8Array>) {
-      const encoder = new TextEncoder();
-      const send = (event: string, data: string) => {
-        controller.enqueue(encoder.encode(`event: ${event}\n`))
-        controller.enqueue(encoder.encode(`data: ${data}\n\n`))
-      }
-      const cleanup = init(send)
+	const stream = new ReadableStream({
+		start(controller: ReadableStreamController<Uint8Array>) {
+			const encoder = new TextEncoder()
+			const send = (event: string, data: string) => {
+				controller.enqueue(encoder.encode(`event: ${event}\n`))
+				controller.enqueue(encoder.encode(`data: ${data}\n\n`))
+			}
+			const cleanup = init(send)
 
-      let closed = false
-      const close = () => {
-        if (closed) return
-        cleanup()
-        closed = true
-        request.signal.removeEventListener('abort', close)
-        controller.close()
-      }
+			let closed = false
+			const close = () => {
+				if (closed) return
+				cleanup()
+				closed = true
+				request.signal.removeEventListener('abort', close)
+				controller.close()
+			}
 
-      request.signal.addEventListener('abort', close)
+			request.signal.addEventListener('abort', close)
 
-      if (request.signal.aborted) {
-        close()
-        return
-      }
-    }
-  })
+			if (request.signal.aborted) {
+				close()
+				return
+			}
+		},
+	})
 
-  return new Response(stream, {
-    status: 200,
-    headers: {
-      'Cache-Control': 'no-store, no-transform',
-      'Content-Type': 'text/event-stream',
-    },
-  })
+	return new Response(stream, {
+		status: 200,
+		headers: {
+			'Cache-Control': 'no-store, no-transform',
+			'Content-Type': 'text/event-stream',
+		},
+	})
 }
