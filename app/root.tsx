@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import SiteFooter from "~/components/SiteFooter"
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -23,6 +24,7 @@ export default function App() {
       </head>
       <body>
         <main><Outlet /></main>
+        <SiteFooter />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
