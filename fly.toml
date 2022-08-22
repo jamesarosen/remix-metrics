@@ -1,5 +1,3 @@
-# fly.toml file generated for long-smoke-3450 on 2022-08-21T15:21:47-07:00
-
 app = "remix-metrics"
 kill_signal = "SIGINT"
 kill_timeout = 5
@@ -12,8 +10,7 @@ processes = []
   auto_rollback = true
 
 [[services]]
-  http_checks = []
-  internal_port = 8080
+  internal_port = 3000
   processes = ["app"]
   protocol = "tcp"
   script_checks = []
