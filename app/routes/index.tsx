@@ -3,7 +3,6 @@ import { Link } from "@remix-run/react";
 export default function Index() {
   return (
     <>
-      <h1>Remix-Metrics Demo</h1>
       <p>
         This app demonstrates using{" "}
         <a href="https://remix.run/" target="_blank" rel="noreferrer">
@@ -22,7 +21,7 @@ export default function Index() {
           ReadableStream
         </a>
       </p>
-      <p>
+      <p className="mt-4">
         It supports a single metric:{" "}
         <Link to="/metrics/cosine/table">cosine</Link>.
       </p>
